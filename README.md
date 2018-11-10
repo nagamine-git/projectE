@@ -1,24 +1,42 @@
-# README
+# Railsアプリデモ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Local環境での使い方
+```bash
+# 構築
+docker-compose build
+# bundle install
+docker-compose run --rm web bundle install
+# 起動
+docker-compose up
+# 停止
+docker-compose down
+# マイグレーション
+docker-compose run --rm web rake db:migrate
+```
 
-Things you may want to cover:
+## デプロイ
+```bash
+# 準備
+npm install -g heroku
+# ログイン
+heroku login
+# リモートに接続
+heroku git:remote -a efg-forum
+# push
+git push heroku master
+# migrate
+heroku run rake db:migrate
+```
 
-* Ruby version
+## ログ監視方法
+```bash
+heroku logs -t
+```
 
-* System dependencies
+## DBへのアクセス方法
+ローカルにpsqlを入れる
+https://postgresapp.com/downloads.html
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+heroku pg:psql
+```
