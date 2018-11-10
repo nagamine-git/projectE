@@ -12,6 +12,8 @@ docker-compose up
 docker-compose down
 # マイグレーション
 docker-compose run --rm web rake db:migrate
+# SQLへのつなぎ方
+docker-compose run --rm web rails db
 ```
 
 ## デプロイ
@@ -34,9 +36,9 @@ heroku logs -t
 ```
 
 ## DBへのアクセス方法
-ローカルにpsqlを入れる
-https://postgresapp.com/downloads.html
-
-```
+```bash
+# ローカルにpsqlを入れる
+brew install postgresql
+# heroku上のpsqlを見る
 heroku pg:psql
 ```
