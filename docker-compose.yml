@@ -1,14 +1,5 @@
 version: '2'
 services:
-  db:
-    image: mysql:8.0.13
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./docker/mysql/volumes:/var/lib/mysql
-    extends:
-      file: ./docker/mysql/password.yml
-      service: password
   web:
     build:
       context: .
@@ -20,8 +11,3 @@ services:
       - .:/myapp
     environment:
       RAILS_ENV: development
-    extends:
-      file: ./docker/mysql/password.yml
-      service: password
-    depends_on:
-      - db
