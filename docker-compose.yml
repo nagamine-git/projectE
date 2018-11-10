@@ -8,6 +8,6 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/myapp
+      - .:/project_e
     environment:
       RAILS_ENV: development
